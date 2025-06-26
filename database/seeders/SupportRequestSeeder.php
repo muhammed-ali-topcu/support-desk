@@ -13,6 +13,6 @@ class SupportRequestSeeder extends Seeder
      */
     public function run(): void
     {
-        SupportRequest::factory()->count(10)->create();
+        SupportRequest::factory()->count(100)->create();
     }
 }

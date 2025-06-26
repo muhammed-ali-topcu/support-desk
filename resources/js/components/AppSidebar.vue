@@ -11,8 +11,13 @@ import AppLogo from './AppLogo.vue';
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard',
+        href: route('dashboard'),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Support Requests',
+        href: route('support-requests.index'),
+        icon: Folder,
     },
 ];
 
