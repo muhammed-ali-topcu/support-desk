@@ -26,7 +26,7 @@ class SupportRequestRequest extends FormRequest
 
             'email'   => ['required', 'string', 'email'],
             'subject' => ['required', 'string', 'max:255',
-                Rule::unique('support_requests')->where('subject', $this->input('subject'))->where('email', $this->input('email'))],
+                Rule::unique('support_requests')->where('email', $this->input('email'))],
             'message' => ['required', 'string'],
         ];
     }
