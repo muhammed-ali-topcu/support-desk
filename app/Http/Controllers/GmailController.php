@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\GmailService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use App\Models\User;
 use Inertia\Inertia;
 
 class GmailController extends Controller
@@ -59,7 +57,6 @@ class GmailController extends Controller
         
         if (!$user->gmail_token) {
             return Inertia::render('gmail/Authorize');
-
         }
         
         try {
@@ -71,38 +68,12 @@ class GmailController extends Controller
 
             return Inertia::render('gmail/Inbox', [
                 'emails' => $result['emails'],
-                'nextPageToken' => $result['nextPageToken']
             ]);
             
         } catch (\Exception $e) {
             // Token might be expired, redirect to authorize
             return redirect()->route('gmail.authorize')
                 ->with('error', 'Please re-authorize Gmail access');
-        }
-    }
-    
-    public function search(Request $request)
-    {
-        $query = $request->input('q');
-        
-        if (!$query) {
-            return redirect()->route('gmail.index');
-        }
-        
-        $user = Auth::user();
-        $token = json_decode($user->gmail_token, true);
-        $this->gmailService->setAccessToken($token);
-        
-        try {
-            $emails = $this->gmailService->searchEmails($query, 20);
-            
-            return view('gmail.search', [
-                'emails' => $emails,
-                'query' => $query
-            ]);
-            
-        } catch (\Exception $e) {
-            return back()->with('error', 'Search failed: ' . $e->getMessage());
         }
     }
     

@@ -28,6 +28,17 @@ export default {
         };
     },
 
+    methods: {
+        confirmDisconnect() {
+            if (confirm('Are you sure you want to disconnect your Gmail account?')) {
+                this.disconnect();
+            }
+        },
+        disconnect() {
+            this.$inertia.post(route('gmail.disconnect'));
+        },
+    },
+
 };
 </script>
 
@@ -36,6 +47,7 @@ export default {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-2xl font-bold text-gray-900">Gmail Inbox</h1>
+                <button type="submit" class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 " @click="confirmDisconnect">Disconnect</button>
             </div>
 
             <div class=" overflow-hidden sm:rounded-lg divide-y divide-gray-200">

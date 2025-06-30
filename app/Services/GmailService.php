@@ -73,38 +73,10 @@ class GmailService
                 }
             }
 
-            return [
-                'emails'        => $emails,
-                'nextPageToken' => $messages->getNextPageToken(),
-            ];
+            return ['emails'=> $emails];
 
         } catch (Exception $e) {
             throw new Exception('Error retrieving emails: ' . $e->getMessage());
-        }
-    }
-
-    public function searchEmails($query, $maxResults = 10)
-    {
-        try {
-            $optParams = [
-                'maxResults' => $maxResults,
-                'q'          => $query,
-            ];
-
-            $messages = $this->service->users_messages->listUsersMessages('me', $optParams);
-            $emails   = [];
-
-            if ($messages->getMessages()) {
-                foreach ($messages->getMessages() as $message) {
-                    $messageDetail = $this->service->users_messages->get('me', $message->getId());
-                    $emails[]      = $this->parseMessage($messageDetail);
-                }
-            }
-
-            return $emails;
-
-        } catch (Exception $e) {
-            throw new Exception('Error searching emails: ' . $e->getMessage());
         }
     }
 
