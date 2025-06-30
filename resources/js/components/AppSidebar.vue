@@ -19,6 +19,11 @@ const mainNavItems: NavItem[] = [
         href: route('support-requests.index'),
         icon: Folder,
     },
+    {
+        title: 'Gmail',
+        href: route('gmail.index'),
+        icon: Folder,
+    },
 ];
 
 const footerNavItems: NavItem[] = [

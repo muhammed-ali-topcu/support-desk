@@ -7,6 +7,7 @@ use App\Services\GmailService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use Inertia\Inertia;
 
 class GmailController extends Controller
 {
@@ -57,7 +58,8 @@ class GmailController extends Controller
         $user = Auth::user();
         
         if (!$user->gmail_token) {
-            return view('gmail.authorize');
+            return Inertia::render('gmail/Authorize');
+
         }
         
         try {
@@ -66,7 +68,8 @@ class GmailController extends Controller
             
             $result = $this->gmailService->getInboxEmails(20);
             
-            return view('gmail.inbox', [
+
+            return Inertia::render('gmail/Inbox', [
                 'emails' => $result['emails'],
                 'nextPageToken' => $result['nextPageToken']
             ]);
