@@ -15,10 +15,17 @@ export default {
             type: Object,
             required: true,
         },
+        filters: {
+            type: Object,
+            default: () => ({}),
+        },
     },
 
     data() {
         return {
+            form: {
+                search: this.filters.search || ''
+            },
             breadcrumbs: [
                 {
                     title: 'Support Requests',
@@ -28,14 +35,39 @@ export default {
         };
     },
 
+    watch: {
+        'form.search': {
+            handler(value) {
+                this.$inertia.get(route('support-requests.index'), 
+                    { search: value },
+                    {
+                        preserveState: true,
+                        preserveScroll: true,
+                        replace: true
+                    }
+                );
+            },
+        }
+    }
 };
 </script>
 
 <template>
     <AppLayout :breadcrumbs="breadcrumbs">
-        <h1 class="text-2xl font-bold ">Support Requests</h1>
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Support Requests</h1>
+            <div class="relative">
+                <input
+                    v-model="form.search"
+                    type="text"
+                    placeholder="Search..."
+                    class="p-2 pr-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-72"
+                />
+            </div>
+        </div>
+        
         <div class="mt-4">
-            <div >
+            <div>
                 <table class="min-w-full">
                     <thead>
                         <tr>
@@ -54,10 +86,10 @@ export default {
                             <td class="p-3 text-sm text-gray-900">{{ supportRequest.subject }}</td>
                             <td class="p-3 text-sm text-gray-900">{{ supportRequest.message }}</td>
                             <td class="p-3 text-sm text-gray-900">{{ supportRequest.created_at }}</td>
-
                         </tr>
                         <tr v-if="supportRequests.data.length === 0">
-                            <td colspan="6" class="p-3 text-center text-sm text-gray-500">No support requests found.
+                            <td colspan="5" class="p-3 text-center text-sm text-gray-500">
+                                No support requests found.
                             </td>
                         </tr>
                     </tbody>
