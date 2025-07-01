@@ -38,6 +38,8 @@ return [
         'client_id' => env('GMAIL_CLIENT_ID'),
         'client_secret' => env('GMAIL_CLIENT_SECRET'),
         'redirect_uri' => env('GMAIL_REDIRECT_URI', env('APP_URL') . '/auth/gmail/callback'),
+        'access_token' => env('GMAIL_ACCESS_TOKEN'),
+        
     ],
 
 ];
