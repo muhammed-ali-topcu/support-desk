@@ -35,7 +35,7 @@ export default {
     <AppLayout :breadcrumbs="breadcrumbs">
         <h1 class="text-2xl font-bold ">Support Requests</h1>
         <div class="mt-4">
-            <div class="overflow-x-auto ">
+            <div >
                 <table class="min-w-full">
                     <thead>
                         <tr>

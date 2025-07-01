@@ -16,7 +16,7 @@ export default {
         return {
             breadcrumbs: [  
                 {
-                    title: 'Gmail',
+                    title: 'Gmail I',
                     href: route('gmail.authorize'),
                 },
             ],

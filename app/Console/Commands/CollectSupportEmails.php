@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\SettingsEnum;
+use App\Models\Setting;
 use App\Models\SupportRequest;
 use App\Models\User;
 use App\Services\GmailService;
@@ -32,8 +34,7 @@ class CollectSupportEmails extends Command
     {
         info('running app:collect-support-emails');
         $this->gmailService = $gmailService;
-        $user               = User::first();
-        $token              = json_decode($user->gmail_token, true);
+        $token              = Setting::get(SettingsEnum::GMAIL_ACCESS_TOKEN->value);
         $this->gmailService->setAccessToken($token);
         $result             = $this->gmailService->getInboxEmails(100);
 

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'm.developer.062025@gmail.com',
         ]);
 
+        $this->call(SettingSeeder::class);
         $this->call(SupportRequestSeeder::class);
     }
 }
