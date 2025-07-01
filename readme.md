@@ -3,7 +3,7 @@
 # installation
 
 1. clone the repository
-    `git clone https://github.com/ali-sharif/support-desk.git`
+    `git clone git@github.com:muhammed-ali-topcu/support-desk.git`
 2. go to the project directory
     `cd support-desk`
 3. run `composer install`
@@ -32,14 +32,14 @@
 2. add new support request by email
  send email to `m.developer.062025@gmail.com` with subject and message
 
-4. login to dashboard 'http://localhost:8000/login'
+3. login to dashboard 'http://localhost:8000/login'
     `email: m.developer.062025@gmail.com`
     `password: password`
 
-5. list support requests
+4. list support requests
     'http://localhost:8000/support-requests'
 
-6. you can also see the actual inbox of `m.developer.062025@gmail.com` in 'http://localhost:8000/gmail'
+5. you can also see the actual inbox of `m.developer.062025@gmail.com` in 'http://localhost:8000/gmail'
 
     
     
