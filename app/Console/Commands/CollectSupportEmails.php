@@ -41,10 +41,9 @@ class CollectSupportEmails extends Command
         foreach ($result['emails'] as $email) {
 
             $emailAddress = Str::of($email['from'])->after('<')->before('>')->value();
-            $subject      = $email['subject'];
-            $message      = $email['body'];
-            if ($this->_ensureNotExists($emailAddress, $subject)) {
-             //   info('new support request saved form '. $emailAddress.' about:' .$subject);
+            $subject      = $email['subject']??null;
+            $message      = $email['body']??null;
+            if($subject && $message && $this->_ensureNotExists($emailAddress, $subject)){
                 SupportRequest::create([
                     'email'   => $emailAddress,
                     'subject' => $subject,
