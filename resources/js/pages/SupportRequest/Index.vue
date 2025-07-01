@@ -71,24 +71,24 @@ export default {
                 <table class="min-w-full">
                     <thead>
                         <tr>
-                            <th class="p-3 text-left text-sm font-medium text-gray-500">Id</th>
-                            <th class="p-3 text-left text-sm font-medium text-gray-500">Email</th>
-                            <th class="p-3 text-left text-sm font-medium text-gray-500">Subject</th>
-                            <th class="p-3 text-left text-sm font-medium text-gray-500">Message</th>
-                            <th class="p-3 text-left text-sm font-medium text-gray-500">Created At</th>
+                            <th class="p-3 text-left text-sm font-medium ">Id</th>
+                            <th class="p-3 text-left text-sm font-medium ">Email</th>
+                            <th class="p-3 text-left text-sm font-medium ">Subject</th>
+                            <th class="p-3 text-left text-sm font-medium ">Message</th>
+                            <th class="p-3 text-left text-sm font-medium ">Created At</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="supportRequest in supportRequests.data" :key="supportRequest.id"
-                            class="border-b hover:bg-gray-50">
-                            <td class="p-3 text-sm text-gray-900">{{ supportRequest.id }}</td>
-                            <td class="p-3 text-sm text-gray-900">{{ supportRequest.email }}</td>
-                            <td class="p-3 text-sm text-gray-900">{{ supportRequest.subject }}</td>
-                            <td class="p-3 text-sm text-gray-900">{{ supportRequest.message }}</td>
-                            <td class="p-3 text-sm text-gray-900">{{ supportRequest.created_at }}</td>
+                            class="border-b ">
+                            <td class="p-3 text-sm ">{{ supportRequest.id }}</td>
+                            <td class="p-3 text-sm ">{{ supportRequest.email }}</td>
+                            <td class="p-3 text-sm ">{{ supportRequest.subject }}</td>
+                            <td class="p-3 text-sm ">{{ supportRequest.message }}</td>
+                            <td class="p-3 text-sm ">{{ supportRequest.created_at }}</td>
                         </tr>
                         <tr v-if="supportRequests.data.length === 0">
-                            <td colspan="5" class="p-3 text-center text-sm text-gray-500">
+                            <td colspan="5" class="p-3 text-center text-sm ">
                                 No support requests found.
                             </td>
                         </tr>
